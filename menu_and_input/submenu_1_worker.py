@@ -38,7 +38,7 @@ def submenu_1_worker():
             continue
         if _prefix == 'cm':
             command = _code
-            do_command(human, containeers, command)  # use inputed data to process add/del data in database
+            do_command(human, containeers, command)  # use inputed data to add/del data in database
 
             human = ''          # reset value variables to empty
             containeers = []    # reset value variables to empty
