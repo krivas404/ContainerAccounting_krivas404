@@ -7,5 +7,7 @@ def submenu_5_worker():
         _prefix = _parsed_input[0]
         _code = _parsed_input[1]
 
+        print('В разработке. Пожалуйста, введите q чтобы выйти в главное меню.')
+
         if _code == 'q':
             return 'quit'
