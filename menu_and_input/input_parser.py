@@ -2,7 +2,9 @@ from menu_and_input.input import take_input
 from exceptions import LenghtInputError
 
 
-def parse_input(raw_input):
+def parse_input():
+    raw_input = take_input()
+
     if len(raw_input) == 1:  # Check if it's menu item
         # Now finding what is the menu item here
         if raw_input == '1':
@@ -38,5 +40,3 @@ def parse_input(raw_input):
     code = raw_input[2:]
     return prefix, code
 
-
-input_after_parser = parse_input(take_input())

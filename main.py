@@ -1,4 +1,3 @@
-from menu_and_input.console_menu_text import
 from menu_and_input.main_menu import start_main_menu
 from exceptions import LenghtInputError
 
