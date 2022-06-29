@@ -1,1 +1,1 @@
-db_path = r'\\hostname\folder\ContainerAccountingDataBase\sqlite3.db'
+db_path = r'/sqlite3.db'
