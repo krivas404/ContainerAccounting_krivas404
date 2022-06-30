@@ -1,5 +1,6 @@
 from menu_and_input.input_parser import parse_input
 
+"""menu 2 - id контейнера или курьера -> узнать все привязки в базе данных по введённому id"""
 
 def submenu_2_worker():
     print_all_containeers_on_hands()

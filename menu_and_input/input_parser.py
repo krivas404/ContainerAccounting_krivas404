@@ -19,7 +19,7 @@ def parse_input():
             return 'menu', 5
         if raw_input == '6':
             return 'menu', 6
-        if raw_input.lower() == 'q':
+        if raw_input.lower() == 'q' or raw_input.lower('в'):
             return 'menu', 'quit'
 
     # If it's not menu item, than parse input for check other cases

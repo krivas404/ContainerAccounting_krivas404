@@ -1,5 +1,6 @@
 from menu_and_input.input_parser import parse_input
 
+"""menu 1 - выдача контейнеров/получение контейнеров"""
 
 menu_command_push_to_db = '000001'
 menu_command_del_from_db = '000002'

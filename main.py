@@ -3,10 +3,11 @@ from exceptions import LenghtInputError
 
 
 def main():
-    try:
-        start_main_menu()
-    except LenghtInputError:
-        start_main_menu()
+    while True:
+        try:
+            start_main_menu()
+        except LenghtInputError:
+            start_main_menu()
 
 
 
