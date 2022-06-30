@@ -58,6 +58,7 @@ class Container(Base):
     def __init__(self, container_id, courier_id):
         self.container_id = container_id
         self.courier_id = courier_id
+        self.date_hand_over = str(datetime.now())
 
     def __repr__(self):
         return f"<Контейнер id: {self.container_id}"

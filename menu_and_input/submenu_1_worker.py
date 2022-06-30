@@ -1,4 +1,5 @@
 from menu_and_input.input_parser import parse_input
+from database.dbsession import Container, Session
 
 """menu 1 - выдача контейнеров/получение контейнеров"""
 
@@ -54,7 +55,7 @@ def do_command(human, containers, command):
         push_human_and_containers_to_database(human, containers)
         return
     if command == menu_command_del_from_db:
-        delete_human_and_containers_from_database(human, containers)
+        delete_human_and_containers_from_database(containers, human)
         return
     if command == menu_command_clean_input:  # do nothing, variables value resetting not here
         print(
@@ -63,9 +64,24 @@ def do_command(human, containers, command):
 
 
 def push_human_and_containers_to_database(human, containers):
-    print('Сотрудник: ', human, '\nКонтейнеры: ', '\n, containers' + '\nКОД - выдать контейнеры сотруднику \nтест')
-    pass
+    session = Session()
+    for container in containers:
+        new_container = Container(container, human)
+        session.add(new_container)
+        session.commit()
+        session.flush()
+    session.close()
+    return
 
-def delete_human_and_containers_from_database(human, containers):
-    print('Сотрудник: ', human, '\nКонтейнеры: \n', containers, '\n КОД - принять контейнеры на склад \nтест')
-    pass
+
+def delete_human_and_containers_from_database(containers, human=''):
+    session = Session()
+    for container in containers:
+        int(container)
+        query = session.query(Container).filter(Container.container_id == container)
+        print(query, 'type: ', type(query))
+        query.delete()
+        session.commit()
+        session.flush()
+    session.close()
+    return
