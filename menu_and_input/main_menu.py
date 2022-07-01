@@ -12,6 +12,7 @@ def start_main_menu():
         call_submenu(*_input)  # Function take 2 position args
     except NotMenuError:
         print('Ошибка, вы ввели не пункт меню. Попробуйте ещё раз.')
-        print_text_main_menu()
-        _input = parse_input()
-        call_submenu(*_input)  # Function take 2 position args
+        start_main_menu()
+        # print_text_main_menu()
+        # _input = parse_input()
+        # call_submenu(*_input)  # Function take 2 position args

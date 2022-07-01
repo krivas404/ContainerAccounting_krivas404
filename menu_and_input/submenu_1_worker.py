@@ -59,7 +59,7 @@ def do_command(human, containers, command):
         return
     if command == menu_command_clean_input:  # do nothing, variables value resetting not here
         print(
-            'Сотрудник: ' + human + '\nКонтейнеры: ' + '\n' + containers + '\n КОД - обнулить введённые данные \nтест')
+            'Сотрудник: ', human, '\nКонтейнеры: \n', containers, '\n КОД - обнулить введённые данные \nтест')
         return
 
 
@@ -71,6 +71,7 @@ def push_human_and_containers_to_database(human, containers):
         session.commit()
         session.flush()
     session.close()
+    print(f"Контейнеры с ID {containers} были выданы сотруднику hm{human}")
     return
 
 
@@ -79,9 +80,9 @@ def delete_human_and_containers_from_database(containers, human=''):
     for container in containers:
         int(container)
         query = session.query(Container).filter(Container.container_id == container)
-        print(query, 'type: ', type(query))
         query.delete()
         session.commit()
         session.flush()
+    print(f'Контейнеры {containers} были возвращены на склад')
     session.close()
     return
