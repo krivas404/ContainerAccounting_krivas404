@@ -8,9 +8,11 @@ menu_command_del_from_db = '000002'
 menu_command_clean_input = '000003'
 
 def main():
+    parsed_input = parse_input()
     if parsed_input[1] == 'q':
         return
     
+
 
 def submenu_1_worker():
     """take types and codes. stuck it until take command for clear stack or push to database"""
@@ -30,7 +32,7 @@ def submenu_1_worker():
             '\nКонтейнер: ', containeers
               )
 
-        if _code == 'q':
+        if _code == 'quit':
             return 'quit'
         if _prefix == 'hm':
             human = _code

@@ -1,5 +1,5 @@
 from menu_and_input.input_parser import parse_input
-from database.current_db_courier_and_containers_info import query_container_all_last_places, query_courier_all_last_containers
+from database.dbsession import Container, Session
 
 
 def submenu_3_worker():
@@ -20,7 +20,9 @@ def submenu_3_worker():
 
 
 def query_container_all_last_places(container_code, data):
-    pass
+    session = Session()
+    query = session.query(Container).filter(Container.container_id == container_code)
+    print(query)
 
 
 def print_container_last_places(container_code, data):
@@ -30,10 +32,10 @@ def print_container_last_places(container_code, data):
 
 
 def query_courier_all_last_containers(courier_code, data):
-    pass
+    session = Session()
+    query = session.query(Container).filter(Container.container_id == courier_code)
+    print(query)
 
 
 def print_courier_last_containers(courier_code, data):
-    query = query_courier_all_last_containers(courier_code, data)
-    print(query)
     return
