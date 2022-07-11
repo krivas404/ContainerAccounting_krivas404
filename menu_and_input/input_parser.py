@@ -40,3 +40,55 @@ def parse_input():
     code = raw_input[2:]
     return prefix, code
 
+
+
+
+import keyboard
+from re import match
+from string import ascii_lowercase, digits
+
+key_press_log = ''  #global
+
+keys_for_registration = ascii_lowercase + digits
+human_regexp = r'hm\d{6}'
+container_regexp = r'..5\d{5}'
+quit_regexp = r'q'
+command_regexp = r'cm\d{6}'
+
+def is_code(user_input: str):
+    last_8_chars = user_input[-8::]
+    print(last_8_chars)
+    if match(human_regexp, last_8_chars):
+        return ''
+    if match(container_regexp, last_8_chars):
+        print('container')
+    if match(quit_regexp, last_8_chars[-1]):
+        print('menu')
+    if match(command_regexp, last_8_chars):
+        print('command')
+
+
+def keypress_logging(key):
+    f = open('logs.txt', 'w')
+    f.write(key)
+    f.close()
+
+    global key_press_log
+    if len(key_press_log) > 50:
+        key_press_log = key_press_log[-10::]
+
+def print_pressed_keys(e):
+    key_pressed = e.name.lower()
+    keypress_logging(key_pressed)
+    print(key_pressed)
+    global key_press_log
+    if key_pressed in keys_for_registration:
+        # print('match: ', key_pressed)
+        key_press_log += key_pressed
+        is_code(key_press_log)
+
+
+print(keys_for_registration)
+keyboard.on_press(print_pressed_keys)
+keyboard.wait('esc')
+# print('ending: ', key_press_log)
